@@ -1,13 +1,27 @@
-import Hello from "./Hello";
-import Products from "./Products";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Home from "./Components/Home";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Cart from "./Components/cart";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Hello />
-      <Products/>
-    </div>
+    <>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+
+      <Footer />
+    </>
   );
-}
+};
 
 export default App;

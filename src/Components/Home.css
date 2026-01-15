@@ -1,0 +1,95 @@
+/* header css */
+
+.topheadbar a.nav-link.active {
+    color:#c05f6b !important;
+}
+.topheadbar a.nav-link{
+    color:#e99cab !important;
+}
+.topheadbar a.nav-link:hover{
+    color:#c05f6b !important;
+}
+.topheadbar a.btn.btn-primary.addcartbtn {
+    background: #c05f6b !important;
+}
+.topheadbar .logoimg
+{
+    width: 30% !important;
+}
+.topheadbar .addcartbtn {
+    width: 100%;
+    padding: 10px 30px !important;
+}
+
+/* Footer css */
+.myfooter {
+    background: #fff;
+}
+
+.myfooter  .logoimg {
+    width: 50%;
+}
+
+/* Home css */
+
+.bannerbtn{
+    background: #c05f6b !important;
+    border: 1px solid #c05f6b !important;
+}
+.hero-section {
+  height: 450px;
+  background-image: url("/banner.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+.womens-img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.addcartbtn {
+    color: #e99cab !important;
+    border: 1px solid #e99cab !important;
+}
+.addcartbtn:hover {
+    border: 1px solid  #c05f6b !important;
+    background-color: #c05f6b !important;
+    color: #fff !important;
+}
+
+
+/* registration form  */
+
+.form-control-border-bottom {
+  border: none;
+  border-bottom: 1px solid #ece8e9;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.form-control-border-bottom:focus {
+  border-bottom-color: #ece8e9;
+  box-shadow: none;
+}
+.formbottomtext a {
+    color: #ad646c;
+}
+
+
+/* cart css */
+
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
