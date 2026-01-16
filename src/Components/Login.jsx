@@ -44,7 +44,7 @@ const Login = () => {
 
             <form onSubmit={handleSubmit} noValidate>
 
-              {/* Email */}
+             
               <div className="mb-3 position-relative">
                 <input
                   type="email"
@@ -58,8 +58,6 @@ const Login = () => {
                   <div className="invalid-feedback">{errors.email}</div>
                 )}
               </div>
-
-              {/* Password */}
               <div className="mb-3 position-relative">
                 <div className="input-group">
                   <input
