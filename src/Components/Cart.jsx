@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   return (
@@ -59,9 +60,11 @@ const Cart = () => {
                 <span>₹1049</span>
               </div>
 
+             <Link to="/checkout" className="w-100">
               <button className="btn btn-primary w-100 bannerbtn">
                 Proceed to Checkout
               </button>
+            </Link>
             </div>
           </div>
         </div>

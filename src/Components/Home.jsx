@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 /* Mens Products */
 const mensProducts = [
@@ -49,15 +50,33 @@ const Home = () => {
             {mensProducts.map((product) => (
               <div className="col-12 col-sm-6 col-md-3" key={product.id}>
                 <div className="card h-100 shadow-sm">
-                  <img src={product.image} className="card-img-top men-img" alt={product.name} />
-                  <div className="card-body text-center">
-                    <h6>{product.name}</h6>
-                    <p className="fw-bold">{product.price}</p>
-                    <button className="btn btn-outline btn-sm w-100 addcartbtn">
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
+  
+  <Link to={`/product/${product.id}`}>
+    <img
+      src={product.image}
+      className="card-img-top men-img"
+      alt={product.name}
+      style={{ cursor: "pointer" }}
+    />
+  </Link>
+
+  <div className="card-body text-center">
+   
+    <Link
+      to={`/product/${product.id}`}
+      className="text-decoration-none text-dark"
+    >
+      <h6>{product.name}</h6>
+    </Link>
+
+    <p className="fw-bold">{product.price}</p>
+
+    <button className="btn btn-outline btn-sm w-100 addcartbtn">
+      Add to Cart
+    </button>
+
+  </div>
+</div>
               </div>
             ))}
           </div>

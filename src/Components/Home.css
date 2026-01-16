@@ -93,3 +93,101 @@
   object-fit: cover;
   border-radius: 8px;
 }
+
+
+/* checkout css */
+
+.checkoutfields .form-control-border-bottom {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.checkoutfields .form-control-border-bottom:focus {
+  border-bottom-color: #0d6efd;
+  box-shadow: none;
+}
+.checkoutfields img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+
+/* order sucess */
+
+.order-success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.order-success-popup {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: popupScale 0.3s ease-in-out;
+}
+
+@keyframes popupScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* single product */
+
+/* gallery hover */
+.product-gallery img:hover {
+  border-color: #0d6efd;
+}
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon.facebook {
+  background: #3b5998;
+}
+
+.social-icon.twitter {
+  background: #1da1f2;
+}
+
+.social-icon.instagram {
+  background: #e1306c;
+}
+
+.social-icon.whatsapp {
+  background: #25d366;
+}
