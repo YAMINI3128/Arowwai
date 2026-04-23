@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /* Mens Products */
 const mensProducts = [
@@ -27,22 +27,45 @@ const kidsProducts = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const addToCart = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const productIndex = existingCart.findIndex(
+      (item) => item.id === product.id && item.name === product.name
+    );
+
+    if (productIndex !== -1) {
+      existingCart[productIndex].quantity += 1;
+    } else {
+      existingCart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    navigate("/cart");
+  };
+
   return (
     <>
-    
+      {/* Hero Section */}
       <section className="hero-section d-flex align-items-center justify-content-center text-center">
         <div className="hero-content text-white">
           <h1 className="display-4 fw-bold">New Fashion Collection</h1>
           <p className="lead my-3">
             Discover the latest trends for Men, Women & Kids
           </p>
-          <button className="btn btn-primary btn-lg bannerbtn">
+          <button
+            className="btn btn-primary btn-lg bannerbtn"
+            onClick={() => navigate("/")}
+          >
             Shop Now
           </button>
         </div>
       </section>
 
-     
+      {/* Men's Collection */}
       <section className="py-5">
         <div className="container">
           <h2 className="text-center fw-bold mb-4">Men’s Collection</h2>
@@ -50,52 +73,29 @@ const Home = () => {
             {mensProducts.map((product) => (
               <div className="col-12 col-sm-6 col-md-3" key={product.id}>
                 <div className="card h-100 shadow-sm">
-  
-  <Link to={`/product/${product.id}`}>
-    <img
-      src={product.image}
-      className="card-img-top men-img"
-      alt={product.name}
-      style={{ cursor: "pointer" }}
-    />
-  </Link>
+                  <Link to={`/product/${product.id}`}>
+                    <img
+                      src={product.image}
+                      className="card-img-top men-img"
+                      alt={product.name}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </Link>
 
-  <div className="card-body text-center">
-   
-    <Link
-      to={`/product/${product.id}`}
-      className="text-decoration-none text-dark"
-    >
-      <h6>{product.name}</h6>
-    </Link>
-
-    <p className="fw-bold">{product.price}</p>
-
-    <button className="btn btn-outline btn-sm w-100 addcartbtn">
-      Add to Cart
-    </button>
-
-  </div>
-</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-     
-      <section className="py-5 bg-light">
-        <div className="container">
-          <h2 className="text-center fw-bold mb-4">Women’s Collection</h2>
-          <div className="row g-4">
-            {womensProducts.map((product) => (
-              <div className="col-12 col-sm-6 col-md-3" key={product.id}>
-                <div className="card shadow-sm">
-                  <img src={product.image} className="card-img-top womens-img" alt={product.name} />
                   <div className="card-body text-center">
-                    <h6>{product.name}</h6>
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="text-decoration-none text-dark"
+                    >
+                      <h6>{product.name}</h6>
+                    </Link>
+
                     <p className="fw-bold">{product.price}</p>
-                    <button className="btn btn-outline btn-sm w-100 addcartbtn">
+
+                    <button
+                      className="btn btn-outline btn-sm w-100 addcartbtn"
+                      onClick={() => addToCart(product)}
+                    >
                       Add to Cart
                     </button>
                   </div>
@@ -106,7 +106,37 @@ const Home = () => {
         </div>
       </section>
 
-     
+      {/* Women's Collection */}
+      <section className="py-5 bg-light">
+        <div className="container">
+          <h2 className="text-center fw-bold mb-4">Women’s Collection</h2>
+          <div className="row g-4">
+            {womensProducts.map((product) => (
+              <div className="col-12 col-sm-6 col-md-3" key={product.id}>
+                <div className="card shadow-sm">
+                  <img
+                    src={product.image}
+                    className="card-img-top womens-img"
+                    alt={product.name}
+                  />
+                  <div className="card-body text-center">
+                    <h6>{product.name}</h6>
+                    <p className="fw-bold">{product.price}</p>
+                    <button
+                      className="btn btn-outline btn-sm w-100 addcartbtn"
+                      onClick={() => addToCart(product)}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Kids Collection */}
       <section className="py-5">
         <div className="container">
           <h2 className="text-center fw-bold mb-4">Kids Collection</h2>
@@ -114,11 +144,18 @@ const Home = () => {
             {kidsProducts.map((product) => (
               <div className="col-12 col-sm-6 col-md-3" key={product.id}>
                 <div className="card h-100 shadow-sm">
-                  <img src={product.image} className="card-img-top kid-img" alt={product.name} />
+                  <img
+                    src={product.image}
+                    className="card-img-top kid-img"
+                    alt={product.name}
+                  />
                   <div className="card-body text-center">
                     <h6>{product.name}</h6>
                     <p className="fw-bold">{product.price}</p>
-                    <button className="btn btn-outline btn-sm w-100 addcartbtn">
+                    <button
+                      className="btn btn-outline btn-sm w-100 addcartbtn"
+                      onClick={() => addToCart(product)}
+                    >
                       Add to Cart
                     </button>
                   </div>

@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const totalQuantity = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+
+      setCartCount(totalQuantity);
+    };
+
+    updateCartCount();
+
+    // Update when page reloads or storage changes
+    window.addEventListener("storage", updateCartCount);
+
+    return () => {
+      window.removeEventListener("storage", updateCartCount);
+    };
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg topheadbar">
       <div className="container-fluid">
 
         <Link to="/" className="navbar-brand">
           <img
-            src="/logo.png" 
+            src="/logo.png"
             alt="Logo"
             className="d-inline-block align-text-top logoimg"
           />
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -40,14 +65,19 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link" href="#">Kids Wear</a>
             </li>
-          <li className="nav-item position-relative">
-            <Link to="/cart" className="nav-link">
-              <FaShoppingCart size={18} />
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                0
-              </span>
-            </Link>
-          </li>
+
+            {/* Cart Icon */}
+            <li className="nav-item position-relative">
+              <Link to="/cart" className="nav-link">
+                <FaShoppingCart size={18} />
+
+                {cartCount > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </li>
           </ul>
 
           <div className="d-flex gap-2">

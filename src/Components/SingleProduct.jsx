@@ -32,7 +32,7 @@ const relatedProducts = [
           <div className="mb-3 border rounded p-3 text-center">
             <img
               src={mainImage}
-              alt="Product"
+              alt="Product" 
               className="img-fluid"
             />
           </div>

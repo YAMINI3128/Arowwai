@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -80,49 +81,55 @@ const Register = () => {
                 )}
               </div>
               <div className="mb-3 position-relative">
-                <div className="input-group">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Password"
-                    className={`form-control form-control-border-bottom ${errors.password ? "is-invalid" : ""}`}
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-                {errors.password && (
-                  <div className="invalid-feedback d-block">{errors.password}</div>
-                )}
-              </div>
+  <div className="input-group">
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      placeholder="Password"
+      className={`form-control form-control-border-bottom ${errors.password ? "is-invalid" : ""}`}
+      value={formData.password}
+      onChange={handleChange}
+    />
+
+    <span
+      className="input-group-text bg-transparent"
+      style={{ cursor: "pointer" }}
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? <FaEyeSlash /> : <FaEye />}
+    </span>
+  </div>
+
+  {errors.password && (
+    <div className="invalid-feedback d-block">{errors.password}</div>
+  )}
+</div>
+
               <div className="mb-3 position-relative">
-                <div className="input-group">
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    className={`form-control form-control-border-bottom ${errors.confirmPassword ? "is-invalid" : ""}`}
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  >
-                    {showConfirmPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-                {errors.confirmPassword && (
-                  <div className="invalid-feedback d-block">{errors.confirmPassword}</div>
-                )}
-              </div>
+  <div className="input-group">
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      name="confirmPassword"
+      placeholder="Confirm Password"
+      className={`form-control form-control-border-bottom ${errors.confirmPassword ? "is-invalid" : ""}`}
+      value={formData.confirmPassword}
+      onChange={handleChange}
+    />
+
+    <span
+      className="input-group-text bg-transparent"
+      style={{ cursor: "pointer" }}
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+    >
+      {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+    </span>
+  </div>
+
+  {errors.confirmPassword && (
+    <div className="invalid-feedback d-block">{errors.confirmPassword}</div>
+  )}
+</div>
+
 
               <button type="submit" className="btn btn-primary w-100 mt-3 bannerbtn">
                 Register
